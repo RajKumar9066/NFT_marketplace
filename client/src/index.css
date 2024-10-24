@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    font-family: "Nunito", sans-serif;
+    @apply bg-slate-900
+}
+
+input{
+    @apply focus:outline-none focus:ring-slate-50
+}

@@ -22,6 +22,29 @@ const Card = ({item}) => {
         email: email,
         amount: bidAmount
       }
+// Possible errors
+      try {
+        fetch('http://localhost:5000/checkout',{
+        method: 'POST',
+        Headers:{
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then((response) =>{
+        if(!response.ok){
+          throw new Error("Network response was not ok")
+        }
+        return response.json()
+      }).then((data) =>{
+        // console.log(data)
+        window.location.href = data.invoice.result.url;
+      })
+
+      } catch (error) {
+        console.log(error);
+        throw error;
+      }
+
       console.log(data);
       toggleModal()
     }
